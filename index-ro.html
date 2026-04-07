@@ -1,171 +1,1061 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Retail Audit | Dan Chiculiță</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Comercial Express | Dan Chiculiță</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark:#050a14;
-      --navy:#0a192f;
-      --gold:#d4af37;
-      --white:#ffffff;
+      --bg-dark: #050a14;
+      --navy-deep: #0a192f;
+      --navy-soft: #10233f;
+      --accent-gold: #d4af37;
+      --pearl-white: #f8f9fa;
+      --text-gray: #5b6470;
+      --text-dark: #17202b;
+      --line-soft: rgba(212,175,55,0.22);
+      --shadow: 0 22px 46px rgba(0,0,0,0.14);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin:0;
-      font-family:'Inter', sans-serif;
-      background:#fff;
-      color:#111;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--pearl-white);
+      color: var(--text-dark);
+      line-height: 1.65;
+      overflow-x: hidden;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+
+    .section-lead {
+      font-size: 1.04rem;
+      color: var(--text-gray);
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 16px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 15px 28px;
+      border-radius: 4px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent-gold);
+      color: #111;
+      box-shadow: 0 12px 30px rgba(212,175,55,0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(212,175,55,0.28);
+      background: #ddb94a;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.28);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.52);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* HEADER */
     header {
-      position:absolute;
-      top:0;
-      width:100%;
-      padding:30px 5%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      z-index:10;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      padding: 28px 0;
     }
 
-    header a {
-      color:white;
-      text-decoration:none;
-      font-weight:600;
+    .header-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
     }
 
-    .hero {
-      height:100vh;
-      background:linear-gradient(rgba(5,10,20,0.85),rgba(5,10,20,0.85)),url('supermarket.jpg') center/cover;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      color:white;
-      padding:0 5%;
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
-    h1 {
-      font-family:'Playfair Display';
-      color:var(--gold);
-      font-size:clamp(2.2rem,5vw,4rem);
+    .brand-name {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
     }
 
-    .section {
-      padding:80px 5%;
-      text-align:center;
+    .logo-dde {
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
     }
 
-    .btn {
-      background:var(--gold);
-      padding:16px 40px;
-      font-weight:800;
-      text-decoration:none;
-      color:black;
-      display:inline-block;
-      margin-top:20px;
+    .linkedin-btn {
+      color: white;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 10px 18px;
+      border-radius: 4px;
+      transition: all 0.25s ease;
     }
 
-    .form-box {
-      max-width:600px;
-      margin:auto;
-      background:white;
-      padding:40px;
-      box-shadow:0 20px 40px rgba(0,0,0,0.1);
+    .linkedin-btn:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.5);
     }
 
-    input {
-      width:100%;
-      padding:12px;
-      margin-bottom:10px;
-      border:1px solid #ddd;
+    /* HERO */
+    #hero-section {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(5,10,20,0.86), rgba(5,10,20,0.86)),
+        url('supermarket.jpg') center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 120px 20px 90px;
     }
 
-    button {
-      width:100%;
-      padding:16px;
-      background:var(--gold);
-      border:none;
-      font-weight:800;
-      cursor:pointer;
+    .hero-inner {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: #f3f3f3;
+      margin-bottom: 22px;
+    }
+
+    .hero-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4.3rem);
+      line-height: 1.02;
+      font-style: italic;
+      color: var(--accent-gold);
+      margin-bottom: 22px;
+    }
+
+    .hero-subtitle {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(1.05rem, 2vw, 1.26rem);
+      font-weight: 700;
+      line-height: 1.6;
+      color: #f1f5f9;
+    }
+
+    .hero-actions {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-note {
+      margin-top: 20px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.72);
+      font-weight: 500;
+    }
+
+    /* INTRO STRIP */
+    .triptych {
+      text-align: center;
+    }
+
+    .triptych-top,
+    .triptych-bottom {
+      background: white;
+      padding: 78px 20px;
+    }
+
+    .triptych-top h2 {
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.15;
+      color: var(--navy-deep);
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .triptych-top span {
+      font-weight: 400;
+      color: #6c7581;
+    }
+
+    .triptych-middle {
+      background: var(--navy-deep);
+      color: white;
+      padding: 82px 20px;
+    }
+
+    .risk-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .risk-card {
+      border: 1px solid var(--line-soft);
+      padding: 26px;
+      text-align: left;
+      background: rgba(255,255,255,0.02);
+      transition: 0.3s ease;
+    }
+
+    .risk-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 26px rgba(212,175,55,0.14);
+    }
+
+    .risk-card h4 {
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .risk-card p {
+      color: rgba(255,255,255,0.86);
+      font-size: 0.96rem;
+    }
+
+    .triptych-bottom p {
+      font-size: 1.16rem;
+      font-weight: 800;
+      margin-bottom: 28px;
+      color: var(--navy-deep);
+    }
+
+    /* CRITICAL CHECKPOINTS */
+    #critical-points {
+      padding: 110px 20px;
+      background: var(--pearl-white);
+      text-align: center;
+    }
+
+    .points-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 48px auto 0;
+    }
+
+    .point-box {
+      background: white;
+      padding: 30px;
+      border-bottom: 3px solid var(--accent-gold);
+      text-align: left;
+      box-shadow: 0 12px 28px rgba(16, 24, 40, 0.05);
+    }
+
+    .point-box h4 {
+      color: var(--navy-deep);
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+
+    .point-box p {
+      color: var(--text-gray);
+      font-size: 0.98rem;
+    }
+
+    /* ROADMAP */
+    #roadmap {
+      padding: 110px 20px;
+      background: var(--navy-deep);
+      color: white;
+    }
+
+    .roadmap-head {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .roadmap-head .section-title {
+      color: var(--accent-gold);
+    }
+
+    .roadmap-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .timeline {
+      border-right: 1px solid rgba(212,175,55,0.3);
+      padding-right: 40px;
+      text-align: right;
+    }
+
+    .timeline-step {
+      margin-bottom: 40px;
+    }
+
+    .timeline-step h3 {
+      color: var(--accent-gold);
+      font-size: 1.18rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-step p {
+      color: rgba(255,255,255,0.84);
+      font-size: 0.97rem;
+    }
+
+    .deliverables {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .deliverable-item {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .qualification-grid {
+      max-width: 920px;
+      margin: 42px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .qualification-box {
+      padding: 22px;
+      font-size: 0.95rem;
+    }
+
+    .qualification-box.good {
+      border: 1px solid #2ecc71;
+    }
+
+    .qualification-box.bad {
+      border: 1px solid #e74c3c;
+    }
+
+    .roadmap-quote {
+      text-align: center;
+      margin-top: 54px;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.18rem;
+      color: white;
+      max-width: 920px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* SURVIVAL STRATEGY */
+    #survival-strategy {
+      padding: 120px 20px;
+      background: var(--bg-dark);
+      color: white;
+      position: relative;
+      text-align: center;
+    }
+
+    .spiral-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 850px;
+      max-width: 90%;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .survival-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .survival-title {
+      color: var(--accent-gold);
+      margin-bottom: 26px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+
+    .survival-intro {
+      margin-bottom: 48px;
+      text-align: left;
+      border-left: 2px solid var(--accent-gold);
+      padding-left: 24px;
+    }
+
+    .survival-intro h3 {
+      margin-bottom: 14px;
+      font-size: 1.42rem;
+    }
+
+    .survival-intro p {
+      font-size: 0.98rem;
+      opacity: 0.92;
+      line-height: 1.75;
+    }
+
+    .survival-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .survival-box {
+      border: 1px solid var(--accent-gold);
+      padding: 24px;
+      background: rgba(10,25,47,0.9);
+      width: 100%;
+      max-width: 560px;
+      text-align: left;
+    }
+
+    .survival-box strong {
+      display: block;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .survival-box p {
+      color: rgba(255,255,255,0.88);
+      font-size: 0.96rem;
+    }
+
+    .survival-close {
+      margin-top: 48px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--accent-gold);
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* CONTACT */
+    #contact {
+      padding: 110px 20px;
+      text-align: center;
+      background: var(--pearl-white);
+    }
+
+    .form-container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: white;
+      padding: 44px;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .form-header h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      color: var(--navy-deep);
+    }
+
+    .form-header p {
+      font-size: 0.97rem;
+      line-height: 1.65;
+      color: #48515c;
+      font-weight: 600;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px 14px;
+      border: 1px solid #d7dde4;
+      border-radius: 4px;
+      font: inherit;
+      color: var(--text-dark);
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 4px rgba(212,175,55,0.12);
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+      font-size: 0.88rem;
+      margin: 18px 0 22px;
+      color: #343d47;
+    }
+
+    .checklist label {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    .checklist input[type="checkbox"] {
+      width: auto;
+      margin-top: 2px;
+    }
+
+    .form-footer {
+      margin-top: 18px;
+      font-size: 0.77rem;
+      color: #7b848f;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .micro-note {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 0.84rem;
+      color: #5f6874;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 36px 20px;
+      background: #02050a;
+      color: white;
+    }
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-left strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .footer-left span {
+      font-size: 0.76rem;
+      opacity: 0.65;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .footer-right p {
+      font-size: 0.72rem;
+      opacity: 0.65;
+    }
+
+    .shield-svg {
+      width: 45px;
+      fill: var(--accent-gold);
+    }
+
+    /* EXIT POPUP */
+    #exitPopup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.76);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .popup-box {
+      background: white;
+      width: min(560px, 100%);
+      border-radius: 6px;
+      padding: 38px 34px 30px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 24px;
+      font-weight: 700;
+      color: #333;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .popup-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      line-height: 1.15;
+      color: var(--navy-deep);
+      margin-bottom: 14px;
+    }
+
+    .popup-box p {
+      color: #4f5863;
+      margin-bottom: 12px;
+    }
+
+    .popup-strong {
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 22px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px) {
+      .risk-grid,
+      .points-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .roadmap-wrap,
+      .qualification-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        border-right: none;
+        border-bottom: 1px solid rgba(212,175,55,0.3);
+        padding-right: 0;
+        padding-bottom: 30px;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner,
+      .brand-wrap {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+
+      .form-grid,
+      .checklist {
+        grid-template-columns: 1fr;
+      }
+
+      .form-container {
+        padding: 30px 22px;
+      }
+
+      .footer-inner,
+      .footer-right {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .triptych-top,
+      .triptych-middle,
+      .triptych-bottom,
+      #critical-points,
+      #roadmap,
+      #survival-strategy,
+      #contact {
+        padding-top: 72px;
+        padding-bottom: 72px;
+      }
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <div>
-    <a href="#">Dan Chiculiță</a>
+  <header>
+    <div class="header-inner">
+      <div class="brand-wrap">
+        <a href="#" class="brand-name">Dan Chiculiță</a>
+        <div class="logo-dde">DIAGNOSTIC. DECIZIE. EXECUȚIE.</div>
+      </div>
+      <a href="index-en.html" class="linkedin-btn">EN</a>
+    </div>
+  </header>
+
+  <section id="hero-section">
+    <div class="hero-inner">
+      <div class="eyebrow">Audit Comercial Express · 90 de minute</div>
+      <p class="hero-kicker">Ai analizat business-ul din toate unghiurile. Și totuși cifrele nu se aliniază.</p>
+      <h1 class="hero-quote">„You can’t see the label from inside the bottle.”</h1>
+      <p class="hero-subtitle">
+        Acest audit nu încearcă să te învețe meseria ta. Aplică rigoarea comercială a retailerului asupra propriului tău model de vânzare, ca să vezi unde se diluează profitul, unde ipotezele devin periculoase și unde următoarea decizie trebuie luată cu mai multă disciplină.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Solicită un diagnostic de 90 de minute</a>
+        <a href="#critical-points" class="btn-secondary">Vezi ce verifică auditul</a>
+      </div>
+
+      <div class="hero-note">Pentru furnizori, lideri comerciali, fondatori și decidenți care au nevoie de claritate înainte de următoarea mișcare importantă.</div>
+    </div>
+  </section>
+
+  <section class="triptych">
+    <div class="triptych-top">
+      <h2>
+        Multe companii intră în retail cu încredere.<br>
+        <span>Foarte puține intră cu o structură cu adevărat validată sub presiune.</span>
+      </h2>
+    </div>
+
+    <div class="triptych-middle">
+      <div class="risk-grid">
+        <div class="risk-card">
+          <h4>Eroziunea Profitului</h4>
+          <p>Cifra de afaceri crește, dar profitabilitatea netă este consumată în tăcere de taxe, discounturi, logistică și execuție slabă.</p>
+        </div>
+        <div class="risk-card">
+          <h4>Risipa Promoțională</h4>
+          <p>Rulezi volum, dar finanțezi pierderi în loc să construiești o rotație sănătoasă și repetabilă.</p>
+        </div>
+        <div class="risk-card">
+          <h4>Presiune Comercială</h4>
+          <p>Termenii sunt acceptați sub urgență, înainte ca impactul lor real să fie modelat și înțeles.</p>
+        </div>
+        <div class="risk-card">
+          <h4>Expunere Strategică</h4>
+          <p>Devii vulnerabil la presiunea private label, la dependența de retailer sau la un portofoliu structural slab.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="triptych-bottom">
+      <p>Auditul Comercial Express izolează semnalele reale de profit în 90 de minute concentrate.</p>
+      <a href="#contact" class="btn-primary">Începe cu un diagnostic focalizat</a>
+    </div>
+  </section>
+
+  <section id="critical-points">
+    <div class="container">
+      <div class="eyebrow">6 puncte critice de verificare</div>
+      <h2 class="section-title">Un audit strategic construit în jurul deciziilor care contează cel mai mult</h2>
+      <p class="section-lead">
+        Nu este o revizie generică. Este un diagnostic comercial conceput pentru a testa rezistența structurală a modelului tău de retail înainte de negociere, expansiune, escaladare sau investiție comercială suplimentară.
+      </p>
+
+      <div class="points-grid">
+        <div class="point-box">
+          <h4>01. Profitabilitate Netă</h4>
+          <p>Evaluăm marja comercială reală după toate taxele, discounturile și scurgerile de cost, nu doar linia de sus vizibilă.</p>
+        </div>
+        <div class="point-box">
+          <h4>02. Eficiență Promoțională</h4>
+          <p>Testăm dacă promoțiile din catalog și de la raft creează mișcare profitabilă sau doar subvenționează volum fără randament real.</p>
+        </div>
+        <div class="point-box">
+          <h4>03. Structura Portofoliului</h4>
+          <p>Separăm SKU-urile strategice „locomotivă” de produsele care consumă capital, diluează focusul sau slăbesc poziția de negociere.</p>
+        </div>
+        <div class="point-box">
+          <h4>04. Dinamica la Raft</h4>
+          <p>Analizăm rotația, frecvența, ritmul de aprovizionare și fricțiunea operațională care subminează performanța de vânzare.</p>
+        </div>
+        <div class="point-box">
+          <h4>05. Expunerea Brandului</h4>
+          <p>Evaluăm câtă vizibilitate și ce rol câștigă brandul tău în fața cumpărătorului versus cât te costă listarea respectivă.</p>
+        </div>
+        <div class="point-box">
+          <h4>06. Priorități de Acțiune</h4>
+          <p>Definim opțiunile practice de manevră: renegociere, corecție de portofoliu, mișcări defensive sau accelerare controlată.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="container">
+      <div class="roadmap-head">
+        <div class="eyebrow">Foaie de parcurs & livrabil</div>
+        <h2 class="section-title">Ce se întâmplă în practică</h2>
+      </div>
+
+      <div class="roadmap-wrap">
+        <div class="timeline">
+          <div class="timeline-step">
+            <h3>1. Clarificare · 15 min</h3>
+            <p>Stabilim rapid dacă auditul se potrivește realității tale comerciale și contextului decizional actual.</p>
+          </div>
+          <div class="timeline-step">
+            <h3>2. Audit Express · 90 min</h3>
+            <p>O analiză concentrată a structurii comerciale, a punctelor de presiune și a expunerii la risc din spatele cifrelor tale.</p>
+          </div>
+          <div class="timeline-step">
+            <h3>3. Output Diagnostic</h3>
+            <p>Primești o lectură strategică sintetică și o direcție clară de manevră, nu un deck generic de prezentare.</p>
+          </div>
+        </div>
+
+        <div class="deliverables">
+          <div class="deliverable-item"><strong>✓ Indicatori de Risc</strong> — vizibilitate codificată pe culori asupra zonelor critice de presiune</div>
+          <div class="deliverable-item"><strong>✓ Matrice de Impact</strong> — consecințele probabile în următoarele 6 luni dacă nu se schimbă nimic</div>
+          <div class="deliverable-item"><strong>✓ 3 Decizii Recomandate</strong> — mișcările care protejează marja, controlul și opțiunile viitoare</div>
+        </div>
+      </div>
+
+      <div class="qualification-grid">
+        <div class="qualification-box good">
+          <strong>● PENTRU CINE</strong><br>
+          Companii care vor claritate înainte de negocieri, expansiune, decizii de portofoliu sau investiție comercială suplimentară.
+        </div>
+        <div class="qualification-box bad">
+          <strong>● NU PENTRU</strong><br>
+          Cei care caută confirmări confortabile în locul unei lecturi oneste a realității comerciale.
+        </div>
+      </div>
+
+      <p class="roadmap-quote">
+        „Nu garantez listări. Garantez claritatea de a nu semna o structură care îți pune business-ul în pericol.”
+      </p>
+    </div>
+  </section>
+
+  <section id="survival-strategy">
+    <svg class="spiral-bg" viewBox="0 0 100 62" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,61.8 A61.8,61.8 0 0,1 61.8,0 A38.2,38.2 0 0,1 100,38.2 A23.6,23.6 0 0,1 76.4,61.8 A14.6,14.6 0 0,1 61.8,47.2" fill="none" stroke="#d4af37" stroke-width="0.3"/>
+    </svg>
+
+    <div class="survival-inner">
+      <div class="survival-title">Retail Survival Strategy</div>
+
+      <div class="survival-intro">
+        <h3>Când reducerea costurilor slăbește chiar capacitatea de a vinde</h3>
+        <p>
+          În perioadele de presiune, instinctul este reducerea imediată a costurilor. Dar tăierile liniare generează adesea daune invizibile pe termen lung. Această parte a auditului testează dacă logica ta actuală de criză protejează activele comerciale reale ale business-ului sau accelerează în tăcere declinul.
+        </p>
+      </div>
+
+      <div class="survival-boxes">
+        <div class="survival-box">
+          <strong>Vulnerabilitatea Teritoriului</strong>
+          <p>În ce punct reducerea frecvenței la raft devine o invitație deschisă pentru concurență să preia spațiu, atenție și conversie?</p>
+        </div>
+        <div class="survival-box">
+          <strong>Capacitatea de Execuție</strong>
+          <p>Ce detalii de profit dispar atunci când organizația intră în mod strict de supraviețuire și disciplina comercială începe să se erodeze?</p>
+        </div>
+        <div class="survival-box">
+          <strong>Costul Recuperării</strong>
+          <p>Este economia de azi cu adevărat mai mică decât investiția viitoare necesară pentru a recupera poziția pierdută peste 12 luni?</p>
+        </div>
+      </div>
+
+      <p class="survival-close">
+        Nu este consultanță generică. Este matematica supraviețuirii — ca să te asiguri că măsurile de azi nu devin nota de plată imposibilă de mâine.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="form-container">
+      <div class="form-header">
+        <h2>Solicită Diagnosticul</h2>
+        <p>
+          Acest audit cere curaj comercial. Dacă vrei o lectură mai clară a locului în care te afli cu adevărat înainte de următoarea decizie majoră, lasă mai jos datele tale.
+        </p>
+      </div>
+
+      <form action="https://formspree.io/f/meepnlpp" method="POST">
+        <input type="hidden" name="_subject" value="Solicitare nouă Audit Comercial Express">
+        <input type="hidden" name="_cc" value="dan.v.chiculita@gmail.com">
+
+        <div class="form-grid">
+          <div>
+            <input type="text" name="name" placeholder="Nume" required>
+          </div>
+          <div>
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="full-width">
+            <input type="text" name="company" placeholder="Companie">
+          </div>
+          <div class="full-width">
+            <textarea name="context" placeholder="Ce situație comercială ai vrea să clarifici?"></textarea>
+          </div>
+        </div>
+
+        <div class="checklist">
+          <label><input type="checkbox" name="issues[]" value="Marja netă scade"> Marja netă este în scădere</label>
+          <label><input type="checkbox" name="issues[]" value="Promoții ineficiente"> Promoțiile par costisitoare, dar nu decisive</label>
+          <label><input type="checkbox" name="issues[]" value="Presiune pe termenii comerciali"> Termenii sunt acceptați sub presiune</label>
+          <label><input type="checkbox" name="issues[]" value="Cash flow blocat"> Cash flow-ul se strânge</label>
+          <label><input type="checkbox" name="issues[]" value="Expunere private label"> Presiunea private label crește</label>
+          <label><input type="checkbox" name="issues[]" value="Lipsă simulare de impact"> Deciziile importante se iau fără suficientă simulare</label>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width:100%;">Solicită auditul de 90 de minute</button>
+
+        <p class="micro-note">Poți scrie și direct la: <strong>dan.v.chiculita@gmail.com</strong></p>
+        <p class="form-footer">✔ Răspuns în 24–48h · ✔ Confidențialitate la nivel NDA · ✔ Fără obligații</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>Dan Chiculiță</strong>
+        <span>DIAGNOSTIC. DECIZIE. EXECUȚIE.</span>
+      </div>
+
+      <div class="footer-right">
+        <p>Protocol: confidențialitate 100% sub NDA.</p>
+        <svg class="shield-svg" viewBox="0 0 100 120">
+          <path d="M50,5 L90,20 L90,60 C90,90 50,115 50,115 C50,115 10,90 10,60 L10,20 Z" fill="none" stroke="#d4af37" stroke-width="4"/>
+          <path d="M50,5 L50,60 L10,60 L10,20 Z" fill="#d4af37"/>
+          <path d="M50,60 L90,60 L90,85 C82,98 50,115 50,115 Z" fill="#d4af37"/>
+        </svg>
+      </div>
+    </div>
+  </footer>
+
+  <!-- EXIT POPUP -->
+  <div id="exitPopup">
+    <div class="popup-box">
+      <span class="popup-close" onclick="closePopup()">×</span>
+      <h3>Înainte să pleci…</h3>
+      <p>Majoritatea companiilor nu au mai întâi o problemă de vânzări.</p>
+      <p>Au o problemă de vizibilitate, de marjă sau de decizie.</p>
+      <p class="popup-strong">În 90 de minute poți identifica unde se pierde profitul în realitate.</p>
+      <a href="#contact" class="btn-primary">Solicită diagnosticul</a>
+      <p style="margin-top:14px; font-size:12px; color:#7b848f;">Fără obligații. Confidențialitate completă.</p>
+    </div>
   </div>
-  <div>
-    <a href="index-en.html">EN</a>
-  </div>
-</header>
 
-<section class="hero">
-  <div>
-    <p style="font-weight:700;">Ai întors business-ul pe toate părțile… dar cifrele nu se aliniază?</p>
-    <h1>„Nu vezi eticheta din interiorul sticlei.”</h1>
-    <p style="max-width:700px;margin:auto;">
-      Auditul nu te învață meseria ta. Aplică rigoarea comercială a retailerului asupra modelului tău.
-    </p>
-  </div>
-</section>
+  <script>
+    let popupShown = false;
 
-<section class="section">
-  <h2>Majoritatea companiilor cresc… fără control real asupra profitului.</h2>
-  <p>Audit Comercial Express identifică exact unde pierzi bani — în 90 de minute.</p>
-  <a href="#contact" class="btn">Solicită diagnostic</a>
-</section>
+    document.addEventListener("mouseout", function(e) {
+      if (e.clientY < 10 && !popupShown) {
+        const popup = document.getElementById("exitPopup");
+        popup.style.display = "flex";
+        popupShown = true;
+      }
+    });
 
-<section class="section" style="background:#0a192f;color:white;">
-  <h2 style="color:#d4af37;">Ce identificăm concret</h2>
-
-  <p>✔ Marja reală după taxe</p>
-  <p>✔ Impact promoții</p>
-  <p>✔ Produse care consumă capital</p>
-  <p>✔ Probleme de rotație</p>
-  <p>✔ Vulnerabilitate în negocieri</p>
-</section>
-
-<section class="section">
-  <h2>Ce primești</h2>
-
-  <p><strong>Indicatori de risc</strong></p>
-  <p><strong>Matrice de impact</strong></p>
-  <p><strong>3 decizii concrete</strong></p>
-
-  <p style="margin-top:40px;font-style:italic;">
-    Nu garantez listări. Garantez claritatea deciziilor.
-  </p>
-</section>
-
-<section id="contact" class="section">
-  <div class="form-box">
-
-    <h2>Solicitare Audit</h2>
-
-    <form action="https://formspree.io/f/meepnlpp" method="POST">
-
-      <input type="text" name="name" placeholder="Nume" required>
-      <input type="email" name="email" placeholder="Email" required>
-
-      <button type="submit">Trimite solicitarea</button>
-
-    </form>
-
-    <p style="font-size:12px;margin-top:15px;">
-      ✔ Răspuns în 24-48h • ✔ Confidențialitate • ✔ Fără obligații
-    </p>
-
-  </div>
-</section>
-
+    function closePopup() {
+      document.getElementById("exitPopup").style.display = "none";
+    }
+  </script>
 </body>
 </html>
