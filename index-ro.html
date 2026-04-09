@@ -70,6 +70,21 @@
       color: var(--accent-gold);
       margin-bottom: 16px;
     }
+    .hero-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.82);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
 
     .btn-primary,
     .btn-secondary {
@@ -119,46 +134,48 @@
       padding: 28px 0;
     }
 
-    .header-inner {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
+ .header-inner {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
 
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 
-    .brand-name {
-      color: white;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.55rem;
-      font-weight: 700;
-    }
+.brand-name {
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.05;
+}
 
-    .logo-dde {
-      color: var(--accent-gold);
-      font-size: 0.82rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-    }
+.logo-dde {
+  color: var(--accent-gold);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
 
-    .linkedin-btn {
-      color: white;
-      font-weight: 700;
-      border: 1px solid rgba(255,255,255,0.3);
-      padding: 10px 18px;
-      border-radius: 4px;
-      transition: all 0.25s ease;
-    }
-
+.linkedin-btn {
+  color: white;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 10px 18px;
+  border-radius: 4px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
     .linkedin-btn:hover {
       background: rgba(255,255,255,0.06);
       border-color: rgba(255,255,255,0.5);
@@ -733,116 +750,136 @@
       margin-bottom: 22px;
     }
 
-    @media (max-width: 980px) {
-      .risk-grid,
-      .points-grid {
-        grid-template-columns: 1fr;
-      }
+   @media (max-width: 980px) {
+  .risk-grid,
+  .points-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .roadmap-wrap,
-      .qualification-grid {
-        grid-template-columns: 1fr;
-      }
+  .roadmap-wrap,
+  .qualification-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .timeline {
-        border-right: none;
-        border-bottom: 1px solid rgba(212,175,55,0.3);
-        padding-right: 0;
-        padding-bottom: 30px;
-        text-align: left;
-      }
-    }
+  .timeline {
+    border-right: none;
+    border-bottom: 1px solid rgba(212,175,55,0.3);
+    padding-right: 0;
+    padding-bottom: 30px;
+    text-align: left;
+  }
 
-    @media (max-width: 760px) {
-      .header-inner,
-      .brand-wrap {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .btn-primary,
-      .btn-secondary {
-        width: 100%;
-      }
-
-      .form-grid,
-      .checklist {
-        grid-template-columns: 1fr;
-      }
-
-      .form-container {
-        padding: 30px 22px;
-      }
-
-      .footer-inner,
-      .footer-right {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .triptych-top,
-      .triptych-middle,
-      .triptych-bottom,
-      #critical-points,
-      #roadmap,
-      #survival-strategy,
-      #contact {
-        padding-top: 72px;
-        padding-bottom: 72px;
-      }
-
-      .promise-strip {
-        padding-top: 42px;
-        padding-bottom: 42px;
-      }
-    }
-    .lang-switch {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  .header-inner {
+    width: min(1180px, calc(100% - 28px));
+  }
 }
 
-.lang-switch a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  height: 40px;
-  padding: 0 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(15,23,42,0.34);
-  color: #ffffff;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(8px);
-}
+@media (max-width: 760px) {
+  .header-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
 
-.lang-switch a:hover {
-  background: rgba(255,255,255,0.10);
-  transform: translateY(-1px);
-}
+  .brand-wrap {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
 
-.lang-switch a.active {
-  background: rgba(255,255,255,0.14);
-  border-color: rgba(255,255,255,0.28);
-}
+  .brand-name {
+    font-size: 2.05rem;
+  }
 
-.lang-switch span {
-  color: rgba(255,255,255,0.38);
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
+  .logo-dde {
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+  }
+
+  .hero-label {
+    padding: 6px 12px;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+
+  .hero-kicker {
+    font-size: 0.98rem;
+    margin-bottom: 18px;
+  }
+
+  .hero-quote {
+    font-size: clamp(2.1rem, 8vw, 3.4rem);
+    line-height: 1.02;
+    margin-bottom: 18px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .form-grid,
+  .checklist {
+    grid-template-columns: 1fr;
+  }
+
+  .form-container {
+    padding: 30px 22px;
+  }
+
+  .footer-inner,
+  .footer-right {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .triptych-top,
+  .triptych-middle,
+  .triptych-bottom,
+  #critical-points,
+  #roadmap,
+  #survival-strategy,
+  #contact {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .promise-strip {
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 20px 0;
+  }
+
+  .header-inner {
+    gap: 12px;
+  }
+
+  .brand-name {
+    font-size: 1.75rem;
+  }
+
+  .logo-dde {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+
   .lang-switch {
     gap: 8px;
   }
@@ -852,6 +889,41 @@
     height: 36px;
     padding: 0 12px;
     font-size: 0.8rem;
+  }
+
+  .linkedin-btn {
+    padding: 9px 14px;
+    font-size: 0.88rem;
+  }
+
+  #hero-section {
+    padding: 150px 20px 72px;
+  }
+
+  .hero-label {
+    font-size: 0.66rem;
+    padding: 6px 10px;
+    margin-bottom: 14px;
+  }
+
+  .hero-kicker {
+    font-size: 0.92rem;
+    margin-bottom: 16px;
+  }
+
+  .hero-quote {
+    font-size: clamp(2rem, 10vw, 3.1rem);
+    line-height: 0.98;
+  }
+
+  .hero-subtitle {
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .hero-note {
+    font-size: 0.86rem;
+    line-height: 1.55;
   }
 }
 
@@ -888,7 +960,7 @@
 
   <section id="hero-section">
     <div class="hero-inner">
-      <div class="eyebrow">Diagnostic Comercial Express</div>
+      <div class="eyebrow hero-label">DIAGNOSTIC COMERCIAL EXPRESS</div>
       <p class="hero-kicker">Când vânzările se mișcă, dar profitul, vizibilitatea sau controlul nu, problema este de regulă structurală.</p>
       <h1 class="hero-quote">Claritate înainte de următoarea greșeală comercială.</h1>
       <p class="hero-subtitle">
